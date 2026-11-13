@@ -1,0 +1,24 @@
+{
+  // Cloudflare Workers 配置。Vercel 部署完全不受影响，读的是 vercel.json。
+  // 部署：npx wrangler deploy
+  // 本地：npx wrangler dev        （密钥放 .dev.vars）
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "doh-relay",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-11-01",
+
+  // 不需要 nodejs_compat：整个 worker 链路只用 Web 标准 API，
+  // 没有 Buffer / process / node:* 依赖。
+  "observability": {
+    "enabled": true
+  },
+
+  // 非敏感默认值可以写这里；DOH_SECRET 必须用 secret，别写进仓库：
+  //   npx wrangler secret put DOH_SECRET
+  "vars": {
+    "UPSTREAM_PRIMARY": "https://dns.google/dns-query",
+    "UPSTREAM_FALLBACK": "https://cloudflare-dns.com/dns-query",
+    "UPSTREAM_TIMEOUT_MS": "3000",
+    "RATE_PER_MIN": "120"
+  }
+}

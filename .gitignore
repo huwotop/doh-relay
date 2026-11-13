@@ -1,0 +1,50 @@
+# ============================================================================
+# 本仓库只放「部署必需」的内容：
+#   Vercel  → api/  lib/  vercel.json  package.json
+#   Workers → worker/  lib/  wrangler.jsonc  package.json
+# 本地工具、测试脚本、构建产物、密钥一律不进仓库。
+#
+# 易踩的坑：lib/test-query.js 名字像测试文件，但它被 lib/doh.js 在运行时
+# require（GET ?name=&type= 调试端点用），属于生产代码，绝不能忽略。
+# ============================================================================
+
+# --- 依赖与构建产物 ---
+node_modules/
+.wrangler/
+.vercel/
+dist/
+build/
+*.tsbuildinfo
+
+# --- 本地密钥（绝对不要提交）---
+.dev.vars
+.env
+.env.*
+*.pem
+*.key
+
+# --- 只在本机用的测试 / 验证脚本（部署不需要它们）---
+# 删掉这两行就会重新纳入版本管理
+test-local.js
+test-deployed.py
+
+# --- 编辑器 / 系统 ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# --- 日志与临时文件 ---
+*.log
+npm-debug.log*
+yarn-error.log*
+.tmp/
+tmp/
+# 上一次命令中断留下的系统临时文件（可以直接删）
+/k699rq0l
+/4brhdeij
+
+# --- 智能体本地记忆（个人上下文，不属于项目）---
+.workbuddy/

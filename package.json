@@ -1,0 +1,15 @@
+{
+  "name": "doh-relay",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Pure overseas DoH relay, deployable to both Vercel Functions and Cloudflare Workers from one codebase",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node test-local.js --check",
+    "serve": "node test-local.js",
+    "dev:cf": "wrangler dev",
+    "deploy:cf": "wrangler deploy"
+  }
+}
