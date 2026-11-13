@@ -48,7 +48,7 @@ wrangler.jsonc      ← Workers 配置
 | `UPSTREAM_TIMEOUT_MS` | 否 | `3000` | 单个上游超时（毫秒） |
 | `RATE_PER_MIN` | 否 | `120` | 每客户端 IP 每分钟请求上限 |
 
-密钥生成：`openssl rand -hex 16`。**不要写进仓库**，用平台的环境变量 / secret 机制注入。
+密钥生成：`openssl rand -hex 16`。用平台的环境变量 / secret 机制注入。
 
 ## 部署到 Vercel
 
