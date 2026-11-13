@@ -1,1 +1,1 @@
-{"$schema":"https://openapi.vercel.sh/vercel.json","functions":{"api/**/*.js":{"maxDuration":10}},"regions":["sin1"],"rewrites":[{"destination":"/api/dns-query?secret=:secret","source":"/:secret/dns-query"}]}
+{"$schema":"https://openapi.vercel.sh/vercel.json","functions":{"api/**/*.js":{"maxDuration":10}},"regions":["hnd1"],"rewrites":[{"destination":"/api/dns-query?secret=:secret","source":"/:secret/dns-query"}]}

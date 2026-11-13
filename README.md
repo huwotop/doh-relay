@@ -55,7 +55,7 @@ wrangler.jsonc      ← Workers 配置
 1. 把仓库导入 Vercel，Framework Preset 选 **Other**（无构建步骤）。
 2. Settings → Environment Variables 添加 `DOH_SECRET`（其余变量可选）。
 3. 加完变量后 **Redeploy 一次**，环境变量才会生效。
-4. Settings → Functions → Function Region 选 **Singapore (sin1)**。`vercel.json` 已写 `regions: ["sin1"]`，默认区域是美国东部，不改会多出约 200ms。
+4. Settings → Functions → Function Region 选 **Tokyo (hnd1)**。`vercel.json` 已写 `regions: ["hnd1"]`，默认区域是美国东部，不改会多出约 200ms。香港（hkg1）虽然也在区域列表里，但底层是 AWS opt-in 区，对等质量与容量优先级都靠后，晚高峰抖动明显，不建议用。
 5. 部署完成后地址为 `https://<项目名>.vercel.app/<DOH_SECRET>/dns-query`。
 
 ## 部署到 Cloudflare Workers
@@ -90,7 +90,7 @@ Vercel 侧对应 `vercel dev`。查看线上日志用 `npx wrangler tail`。
 | | Vercel Hobby | Cloudflare Workers Free |
 |---|---|---|
 | 额度 | 100 万调用/月、100GB 带宽、4 CPU 小时/月，超额暂停不扣费 | 10 万请求/天，CPU 10ms/次，超额返回 1027 |
-| 出口位置 | 可固定为 `sin1` 新加坡，延迟可预期 | 离客户端最近的边缘节点，不固定 |
+| 出口位置 | 可固定为 `hnd1` 东京，延迟可预期 | 离客户端最近的边缘节点，不固定 |
 | 自定义域名 | 支持 CNAME 接入任意 DNS | 要求域名 NS 托管在 Cloudflare |
 | 日志 | Dashboard → Logs | Workers Logs + `wrangler tail` |
 
